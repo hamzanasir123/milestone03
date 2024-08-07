@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Portfolio</title>
+    <link href="style.css" rel="Stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body> 
+    <nav>
+        <ul class="sidebar">
+          <li onclick=hideSidebar()><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 96 960 960" width="26"><path d="m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z"/></svg></a></li>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Projects</a></li>
+          <li><a href="#">FeedBack</a></li>
+          <li><a href="#">About</a></li>
+        </ul>
+        <ul>
+          <li><h1 class="name">Portfolio</h1></li>
+          <li class="hideOnMobile"><a href="#home" class="active">Home</a></li>
+          <li class="hideOnMobile"><a href="#projects">Projects</a></li>
+          <li class="hideOnMobile"><a href="#feedBack">FeedBack</a></li>
+          <li class="hideOnMobile"><a href="#About">About</a></li>
+          <li class="menu-button" onclick=showSidebar()><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 96 960 960" width="26"><path d="M120 816v-60h720v60H120Zm0-210v-60h720v60H120Zm0-210v-60h720v60H120Z"/></svg></a></li>
+        </ul>
+      </nav>
+    
+      <script>
+        function showSidebar(){
+          const sidebar = document.querySelector('.sidebar')
+          sidebar.style.display = 'flex'
+        }
+        function hideSidebar(){
+          const sidebar = document.querySelector('.sidebar')
+          sidebar.style.display = 'none'
+        }
+      </script>
+    <header>
+        <div id="container">
+     <img id="home" src="/Images/IMG_0344.PNG"
+      alt="My Pic" class="img">
+        <h1 id="intro">Hamza Nasir<br> The Web Devoloper</h1>
+        <!-- <h1>The Web Devoloper</h1> -->
+      </div>
+      <div class="wrapper">
+        <a class="icon" href="https://www.facebook.com/profile.php?id=100013306129157&mibextid=kFxxJD" target="_blank"><i class='bx bxl-facebook'></i></a>
+        <a class="icon" href="https://www.instagram.com/hamzaking9531?igsh=NDU1ZHo0M3I4NDg%3D&utm_source=qr" target="_blank"><i class='bx bxl-instagram' ></i></a>
+        <a class="icon" href="https://whatsapp.com/dl/" target="_blank"><i class='bx bxl-whatsapp'></i></a>
+        <a class="icon" href="https://www.linkedin.com/in/hamza-nasir-bb02142b5/" target="_blank"><i class='bx bxl-linkedin'></i></a>
+        <a class="icon" href="https://github.com/hamzanasir123?tab=repositories" target="_blank"><i class='bx bxl-github'></i></a>
+        <a class="icon" href="hk435981@gmail.com" target="_blank"><i class='bx bxl-gmail'></i></a>
+      </div>
+    </header>
+    <main>
+      <div class="msg">
+        <p>The Artist Of Bringing<br> Vision To Life</p>
+      </div>
+
+      <div id="projects" class="projects">
+        <p >Projects</p>
+      </div>
+      <div class="Cards">
+      <div class="flip-card">
+        <div class="flip-card-inner">
+            <div class="flip-card-front">
+                <p class="title">Rock-Paper-Scissor</p>
+            </div>
+            <div class="flip-card-back">
+                <p class="title"><a href="https://github.com/hamzanasir123/Mini-Projects/tree/main/Rock-Paper-Scissor" target="_blank"><i class='bx bxl-github'></i></a></p>
+            </div>
+        </div>
+    </div>
+    <div class="flip-card">
+      <div class="flip-card-inner">
+          <div class="flip-card-front">
+              <p class="title">Tic-Tac-Teo</p>
+          </div>
+          <div class="flip-card-back">
+              <p class="title"><a href="https://github.com/hamzanasir123/Mini-Projects/tree/main/Tic-Tac-Toe" target="_blank"><i class='bx bxl-github'></i></a></p>
+          </div>
+      </div>
+  </div>
+  <div class="flip-card">
+    <div class="flip-card-inner">
+        <div class="flip-card-front">
+            <p class="title">Atm-Machine</p>
+        </div>
+        <div class="flip-card-back">
+            <p class="title"><a href="https://github.com/hamzanasir123/Mini-Projects/tree/main/Atm_Machine" target="_blank"><i class='bx bxl-github'></i></a></p>
+        </div>
+    </div>
+</div>
+<div class="flip-card">
+  <div class="flip-card-inner">
+      <div class="flip-card-front">
+          <p class="title">Calculator</p>
+      </div>
+      <div class="flip-card-back">
+          <p class="title"><a href="https://github.com/hamzanasir123/Mini-Projects/tree/main/Calculator" target="_blank"><i class='bx bxl-github'></i></a></p>
+      </div>
+  </div>
+</div>
+      </div>
+      <div class="cards4">
+<div class="flip-card">
+  <div class="flip-card-inner">
+      <div class="flip-card-front">
+          <p class="title">Currency-Convertor</p>
+      </div>
+      <div class="flip-card-back">
+          <p class="title"><a href="https://github.com/hamzanasir123/Mini-Projects/tree/main/Currency_Convertor" target="_blank"><i class='bx bxl-github'></i></a></p>
+      </div>
+  </div>
+</div>
+<div class="flip-card">
+  <div class="flip-card-inner">
+      <div class="flip-card-front">
+          <p class="title">Number-Guessing-Game</p>
+      </div>
+      <div class="flip-card-back">
+          <p class="title"><a href="https://github.com/hamzanasir123/Mini-Projects/tree/main/Number_Guessing_Game" target="_blank"><i class='bx bxl-github'></i></a></p>
+      </div>
+  </div>
+</div>
+<div class="flip-card">
+  <div class="flip-card-inner">
+      <div class="flip-card-front">
+          <p class="title">Student-Management-System</p>
+      </div>
+      <div class="flip-card-back">
+          <p class="title"><a href="https://github.com/hamzanasir123/Mini-Projects/tree/main/Student_Management_System" target="_blank"><i class='bx bxl-github'></i></a></p>
+      </div>
+  </div>
+</div>
+<div class="flip-card">
+  <div class="flip-card-inner">
+      <div class="flip-card-front">
+          <p class="title">Todo-List-App</p>
+      </div>
+      <div class="flip-card-back">
+          <p class="title"><a href="https://github.com/hamzanasir123/Mini-Projects/tree/main/Todo_List_App" target="_blank"><i class='bx bxl-github'></i></a></p>
+      </div>
+  </div>
+</div>
+      </div>
+
+      <div class="feedback-form">
+        <h1 id="feedBack" class="fb">Give Your FeedBack</h1>
+        <form action="https://formsubmit.co/hk435981@gmail.com" method="post">
+            <br>
+            <br>
+            <input type="hidden" name="_captcha" value="false">
+            <!-- <input type="hidden" name="_next" value="http://127.0.0.1:5500.co/Thanks.html"> -->
+    <label for="name"><b>Your Name </b> :</label>
+    <input type="text" name="name" id="name" placeholder="Name" required>
+    <br>
+    <label for="email"><b>Your Email</b> :</label>
+    <input type="email" name="email" id="email" placeholder="Email" required>
+    <br>
+    <!-- <label for="feedback">FeedBack:</label> -->
+    <textarea id="feedback" name ="feedback" cols="20" rows="5" placeholder="Enter Your Comments" required></textarea>
+    <br>
+    <br>
+            <button type="submit">Submit</button>
+</form>
+</div>
+
+<hr>
+<br>
+
+<div id="container">
+  <section id="About">
+      <h2 class="aboutme">About Me</h2>
+      <p class="aboutmsg">I am currently a learning developer at Governor House,<br>
+           where I am enhancing my skills in software development and contributing to various projects.<br>
+            My role involves collaborating with experienced professionals, gaining hands-on experience with cutting-edge technologies,<br>
+             and continuously improving my coding abilities.<br> 
+             I am passionate about developing innovative solutions and eager to make a positive impact through my work.</p>
+  </section>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </main>
+    <footer>
+        <div id="container">
+            <p>&copy; 2024 Hamza Nasir</p>
+        </div>
+    </footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

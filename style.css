@@ -62,7 +62,7 @@ nav a{
     right: 0;
     height: 100vh;
     width: 250px;
-    background-color: rgba(255, 255, 255, 0.15);
+    background-color: #0ef;
     backdrop-filter: blur(12px);
     box-shadow: -10px 0 10px rgba(0, 0, 0, 0.1);
     list-style: none;
@@ -90,7 +90,7 @@ nav a{
   }
   @media(max-width: 400px){
     .sidebar{
-      width: 100%;
+      width: 50%;
     }
   }
   /* Icons */
@@ -219,7 +219,7 @@ nav a{
 /* MSG */
 .msg{
   /* width: 1000px; */
-  margin: 0 0 120px 50px;
+  margin: 0px 0 120px 50px;
   font-size: 90px;
   text-align: center;
   font-weight: bold;
@@ -363,6 +363,10 @@ footer{
 
 @media screen and (max-width: 600px)
 {
+  nav a{
+    color: black;
+    font-weight: bold;
+  }
   .name{
     font-size: 20px;
   }
@@ -379,17 +383,19 @@ footer{
     h1#intro{
         font-size: 25px;
         margin-left: 1px;
+        margin-right: 20px ;
     }
     .msg{
+      font-size: 30px;
       text-align: center;
-      /* margin-right: 50px; */
-      margin-bottom: 40px;
+      margin-right: 50px;
+      margin-bottom: 170px;
     }
     .msg::first-letter{
-      font-size: 30px;
+      font-size: 60px;
     }
     .projects::first-letter{
-      font-size: 30px;
+      font-size: 60px;
     }
 
     
@@ -471,7 +477,7 @@ footer{
   font-size: 50px;
   color: black;
   margin-top: 100px;
-  margin-bottom: 100px;
+  margin-bottom: 80px;
 }
 .fb::first-letter{
   font-size: 100px;
@@ -493,19 +499,9 @@ button{
   margin-left: 10px;
   color: black;
 }
-
-/* #container{
-  width: 80%;
-  margin: 0 50px 0 0;
-  text-align: center;
-} */
     h2{
       font-size: 15px;
         /* margin-left: 150px; */
-    }
-    p{
-        font-size: 10px;
-        /* margin-left: 140px; */
     }
 }
 

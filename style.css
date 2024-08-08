@@ -469,23 +469,30 @@ footer{
   margin-left: 1px;
   display: flex;
   gap: 80px;
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
 }
 /* feedback */
 
 .fb{
-  font-size: 50px;
+  font-size: 30px;
   color: black;
-  margin-top: 100px;
-  margin-bottom: 80px;
+  /* margin-top: 100px; */
+  /* margin-bottom: 80px; */
 }
 .fb::first-letter{
-  font-size: 100px;
+  font-size: 60px;
   color: #0ef;
 }
 
+#feedBack{
+  margin-bottom: 0px;
+}
+label{
+  display: none;
+}
 textarea{
-  margin-right: 10px;
+  /* margin-right: 70px; */
+  margin-left: 0px;
   border-radius: 10PX;
   width: 250px;
   height: 100px;
@@ -502,6 +509,9 @@ button{
     h2{
       font-size: 15px;
         /* margin-left: 150px; */
+    }
+    .aboutmsg{
+      /* margin-right: 80px; */
     }
 }
 

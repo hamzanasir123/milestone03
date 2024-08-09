@@ -363,6 +363,12 @@ footer{
 
 @media screen and (max-width: 600px)
 {
+  #container{
+    align-items: center;
+    /* width: 80%; */
+    margin: 0 0 0 5px;
+    text-align: center;
+}
   nav a{
     color: black;
     font-weight: bold;
@@ -389,7 +395,7 @@ footer{
       font-size: 30px;
       text-align: center;
       margin-right: 50px;
-      margin-bottom: 170px;
+      margin-bottom: 70px;
     }
     .msg::first-letter{
       font-size: 60px;
@@ -505,13 +511,21 @@ button{
   width: 60px;
   margin-left: 10px;
   color: black;
+  margin-bottom: 0px;
 }
     h2{
       font-size: 15px;
         /* margin-left: 150px; */
     }
-    .aboutmsg{
-      /* margin-right: 80px; */
+ 
+    form{
+      border-radius: 20px;
+      margin: 0px 0px 0px 0px;
+      text-align: center;
+      /* width: 50%; */
+      height: 60vh;
+      /* background-color: #447604; */
+      /* margin-bottom: 100px; */
     }
 }
 

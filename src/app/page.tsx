@@ -1,101 +1,156 @@
+"use client";
+import { useState } from "react";
+import { FooterOne } from "@/Components/Footer/Footer";
+import Home from "@/Components/Home/Home";
+import Navbar from "@/Components/Navbar/Navbar";
+import React from "react";
+import { BackgroundGradient } from "@/Components/ui/background-gradient";
 import Image from "next/image";
+import { StyledWrapper } from "@/Components/CartButton/CartBottun";
+import courseData from "@/Data/music_courses.json";
+import Link from "next/link";
 
-export default function Home() {
+interface Course {
+  id: number;
+  title: string;
+  description: string;
+  price: number;
+  isFeatured: boolean;
+  image?: string;
+}
+
+function Page() {
+  const featuredCourses = courseData.courses.filter(
+    (course: Course) => course.isFeatured
+  );
+  const [cartStorage, setCartStorage] = useState(() => {
+    const storedCart = localStorage.getItem("cart");
+    return storedCart ? JSON.parse(storedCart) : [];
+  });
+  const [cartIds, setCartIds] = useState(() => {
+    return cartStorage.map((item: any) => item.id);
+  });
+  const [cartData, setCartData] = useState();
+  const [removeCartData, setRemoveCartData] = useState();
+
+  const addToCart = (item: any) => {
+    setCartData(item);
+    let localCartIds = cartIds;
+    localCartIds.push(item.id);
+    setCartIds(localCartIds);
+    setRemoveCartData(undefined);
+  };
+
+  const removeFromCart = (id: any) => {
+    setRemoveCartData(id);
+    let localIds = cartIds.filter((item: any) => item != id);
+    setCartIds(localIds);
+    setCartData(undefined);
+  };
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <>
+      <Navbar cartData={cartData} removeCartData={removeCartData} />
+      <Home />
+      <div className="py-12 bg-gray-900">
+        <div>
+          <div className="text-center">
+            <h2 className="text-base text-teal-600 font-semibold tracking-wide uppercase">
+              FEATURED PRODUCTS
+            </h2>
+            <p className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-white sm:text-4xl">
+              Buy With the Best
+            </p>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+        <div className="mt-10 mx-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-center">
+            {featuredCourses.map((course: Course) => (
+              <div key={course.id} className="flex justify-center">
+                <BackgroundGradient className="flex flex-col rounded-[22px] bg-white dark:bg-zinc-900 overflow-hidden h-full max-w-sm">
+                  <div className="p-4 sm:p-6 flex flex-col items-center text-center flex-grow">
+                    <Image
+                      src={course.image}
+                      alt="jordans"
+                      height="400"
+                      width="400"
+                      className="object-contain"
+                    />
+                    <p className="text-lg sm:text-xl text-black mt-4 mb-2 dark:text-neutral-200">
+                      {course.title}
+                    </p>
+                    <p className="text-sm text-neutral-600 dark:text-neutral-400 flex-grow">
+                      {course.description}
+                    </p>
+                    <br />
+                    <br />
+                    <br />
+                    {cartIds.includes(course.id) ? (
+                      <StyledWrapper>
+                        <div
+                          className="button"
+                          onClick={() => removeFromCart(course.id)}
+                          data-tooltip={course.price}
+                        >
+                          <div className="button-wrapper">
+                            <button className="text">Remove</button>
+                            <span className="icon">
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="16"
+                                height="16"
+                                fill="currentColor"
+                                className="bi bi-cart2"
+                                viewBox="0 0 16 16"
+                              >
+                                <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" />
+                              </svg>
+                            </span>
+                          </div>
+                        </div>
+                      </StyledWrapper>
+                    ) : (
+                      <StyledWrapper>
+                        <div
+                          className="button"
+                          onClick={() => addToCart(course)}
+                          data-tooltip={course.price}
+                        >
+                          <div className="button-wrapper">
+                            <button className="text">Add To Cart</button>
+                            <span className="icon">
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="16"
+                                height="16"
+                                fill="currentColor"
+                                className="bi bi-cart2"
+                                viewBox="0 0 16 16"
+                              >
+                                <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" />
+                              </svg>
+                            </span>
+                          </div>
+                        </div>
+                      </StyledWrapper>
+                    )}
+                  </div>
+                </BackgroundGradient>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div className="mt-20 text-center">
+          <Link
+            href={"/"}
+            className="px-4 py-2 rounded border border-neutral-600 text-neutral-700 bg-white hover:bg-gray-100 transition duration-200"
+          >
+            View All Products
+          </Link>
+        </div>
+      </div>
+      <FooterOne />
+    </>
   );
 }
+
+export default Page;

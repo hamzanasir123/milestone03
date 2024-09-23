@@ -1,0 +1,53 @@
+{
+    "courses": [
+      {
+        "id": 1,
+        "title": "AFFECTION – Inspired by Ganymede Marc Antoine",
+        "description": " We create captivating fragrances using the finest ingredients and modern techniques. ",
+        "price": 2550,
+        "isFeatured": true,
+        "image": "https://manzeil.com/wp-content/uploads/2024/08/GET-THE-APP-800x800.png" 
+      },
+      {
+        "id": 2,
+        "title": "COVER DRIVE – YSL La Nuit de l’Homme",
+        "description": " We create captivating fragrances using the finest ingredients and modern techniques.",
+        "price": 1850,
+        "isFeatured": true,
+        "image": "https://manzeil.com/wp-content/uploads/2024/08/GET-THE-APP-800x800.png"  
+      },
+      {
+        "id": 3,
+        "title": "NOOR – Inspired by Burberry Goddess",
+        "description": " We create captivating fragrances using the finest ingredients and modern techniques. ",
+        "price": 1950,
+        "isFeatured": true,
+        "image": "https://manzeil.com/wp-content/uploads/2024/08/GET-THE-APP-800x800.png" 
+      },
+      {
+        "id": 4,
+        "title": "REGAL THRONE – Inspired by LV Ombre Nomade",
+        "description": " We create captivating fragrances using the finest ingredients and modern techniques. ",
+        "price": 1850,
+        "isFeatured": true,
+        "image": "https://manzeil.com/wp-content/uploads/2024/08/GET-THE-APP-800x800.png" 
+      },
+      {
+        "id": 5,
+        "title": "Ignite Valor – Inspired by Dunhill Desire",
+        "description": " We create captivating fragrances using the finest ingredients and modern techniques. ",
+        "price": 1250,
+        "isFeatured": true,
+        "image": "https://manzeil.com/wp-content/uploads/2024/08/GET-THE-APP-800x800.png" 
+      },
+      {
+        "id": 6,
+        "title": "POISO – Inspired by LV Imagination",
+        "description": " We create captivating fragrances using the finest ingredients and modern techniques. ",
+        "price": 3250,
+        "isFeatured": true,
+        "image": "https://manzeil.com/wp-content/uploads/2024/08/GET-THE-APP-800x800.png" 
+      }
+    ]
+  }
+  

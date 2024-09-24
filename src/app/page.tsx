@@ -26,11 +26,9 @@ function Page() {
     const [cartData, setCartData] = useState();
     const [removeCartData, setRemoveCartData] = useState();
     const [cartStorage, _setCartStorage] = useState(() => {
-      if(typeof window !== 'undefined'){
+      if(typeof window != 'undefined'){
         const storedCart = localStorage.getItem("cart");
         return storedCart ? JSON.parse(storedCart) : [];
-      }else{
-        return null;
       }
     });
     const [cartIds, setCartIds] = useState(() => {
@@ -66,7 +64,8 @@ function Page() {
           </div>
           <div className="mt-10 mx-8">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-center">
-              {featuredCourses.map((course: Course) => (
+              {featuredCourses && featuredCourses.length > 0 ? 
+              (featuredCourses.map((course: Course) => (
                 <div key={course.id} className="flex justify-center">
                   <BackgroundGradient className="flex flex-col rounded-[22px] bg-white dark:bg-zinc-900 overflow-hidden h-full max-w-sm">
                     <div className="p-4 sm:p-6 flex flex-col items-center text-center flex-grow">
@@ -138,7 +137,10 @@ function Page() {
                     </div>
                   </BackgroundGradient>
                 </div>
-              ))}
+              )))
+            :
+            <h1>No Item In Availible</h1>
+            }
             </div>
           </div>
           <div className="mt-20 text-center">

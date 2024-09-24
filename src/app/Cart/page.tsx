@@ -18,12 +18,10 @@ interface Course {
 
 const Form = () => {
   const [cartStorage, _setCartStorage] = useState(() => {
-    if(typeof window !== 'undefined'){
+    if(typeof window != 'undefined'){
       const storedCart = localStorage.getItem("cart");
       return storedCart ? JSON.parse(storedCart) : [];
-    }else{
-      return null;
-    }
+    };
   });
   const [cartIds, setCartIds] = useState(() => {
     return cartStorage.map((item: any) => item.id);
@@ -43,7 +41,8 @@ const Form = () => {
       <div className="py-12 bg-gray-900">
         <div className="mt-10 mx-8">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-center mt-24">
-            {cartStorage.map((course: Course) => (
+            {cartStorage && cartStorage.lenght > 0 ? 
+            (cartStorage.map((course: Course) => (
               <div key={course.id} className="flex justify-center">
                 <BackgroundGradient className="flex flex-col rounded-[22px] bg-white dark:bg-zinc-900 overflow-hidden h-full max-w-sm">
                   <div className="p-4 sm:p-6 flex flex-col items-center text-center flex-grow">
@@ -89,7 +88,9 @@ const Form = () => {
                   </div>
                 </BackgroundGradient>
               </div>
-            ))}
+            )))
+          : <h1>There Is No Item In This Cart</h1>
+          }
           </div>
         </div>
       </div>

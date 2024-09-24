@@ -6,6 +6,7 @@ import Link from "next/link";
 
 const Navbar = (props:any) => {
   let jsonData;
+  
 try {
   const cartStorage = localStorage.getItem('cart'); 
   if (cartStorage) {

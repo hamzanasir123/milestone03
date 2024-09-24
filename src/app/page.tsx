@@ -20,16 +20,25 @@ interface Course {
 }
 
 function Page() {
-  if(typeof window !== "undefined"){
+  let jsonData2;
+  
+  try {
+    const cartStorage = localStorage.getItem('cart'); 
+    if (cartStorage) {
+      jsonData2 = JSON.parse(cartStorage);
+    } else {
+      console.log('No data found in localStorage.');
+      jsonData2 = {}; 
+    }
+  } catch (error) {
+    console.error('Error parsing JSON:', error);
+    jsonData2 = {};
+  }
     const featuredCourses = courseData.courses.filter(
       (course: Course) => course.isFeatured
     );
-    const [cartStorage, _setCartStorage] = useState(() => {
-      const storedCart = localStorage.getItem("cart");
-      return storedCart ? JSON.parse(storedCart) : [];
-    });
     const [cartIds, setCartIds] = useState(() => {
-      return cartStorage.map((item: any) => item.id);
+      return jsonData2.map((item: any) => item.id);
     });
     const [cartData, setCartData] = useState();
     const [removeCartData, setRemoveCartData] = useState();
@@ -151,7 +160,6 @@ function Page() {
         <FooterOne />
       </>
     );
-  };
   };
 
 export default Page;

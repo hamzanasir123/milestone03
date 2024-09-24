@@ -17,6 +17,7 @@ interface Course {
 }
 
 const Form = () => {
+  if(typeof window !== "undefined"){
   const [cartStorage, _setCartStorage] = useState(() => {
     const storedCart = localStorage.getItem("cart");
     return storedCart ? JSON.parse(storedCart) : [];
@@ -92,6 +93,7 @@ const Form = () => {
       <FooterOne />
     </>
   );
+};
 };
 
 export default Form;

@@ -35,7 +35,7 @@ try {
         localStorage.setItem('cart', JSON.stringify([props.cartData]))
       }
     }
-  }, [props.cartData, props.removeCartData, cartItem, cartNumber]);
+  }, [props.cartData, props.removeCartData]);
 
   useEffect(() => {
     if(props.removeCartData){
@@ -49,7 +49,7 @@ try {
         localStorage.removeItem('cart');
       }
     }
-  }, [props.removeCartData , props.cartData, cartItem, cartNumber])
+  }, [props.removeCartData , props.cartData])
 
   return (
     <>

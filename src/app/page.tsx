@@ -20,29 +20,22 @@ interface Course {
 }
 
 function Page() {
-  let jsonData2;
-  
-  try {
-    const cartStorage = localStorage.getItem('cart'); 
-    if (cartStorage) {
-      jsonData2 = JSON.parse(cartStorage);
-    } else {
-      console.log('No data found in localStorage.');
-      jsonData2 = {}; 
-    }
-  } catch (error) {
-    console.error('Error parsing JSON:', error);
-    jsonData2 = {};
-  }
     const featuredCourses = courseData.courses.filter(
       (course: Course) => course.isFeatured
     );
-    const [cartIds, setCartIds] = useState(() => {
-      return jsonData2.map((item: any) => item.id);
-    });
     const [cartData, setCartData] = useState();
     const [removeCartData, setRemoveCartData] = useState();
-
+    const [cartStorage, _setCartStorage] = useState(() => {
+      if(typeof window !== 'undefined'){
+        const storedCart = localStorage.getItem("cart");
+        return storedCart ? JSON.parse(storedCart) : [];
+      }else{
+        return null;
+      }
+    });
+    const [cartIds, setCartIds] = useState(() => {
+      return cartStorage.map((item: any) => item.id);
+    });
     const addToCart = (item: any) => {
       setCartData(item);
       const localCartIds = cartIds;

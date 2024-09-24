@@ -13,7 +13,7 @@ interface Course {
   description: string;
   price: number;
   isFeatured: boolean;
-  image?: string;
+  image?: undefined;
 }
 
 const Form = () => {

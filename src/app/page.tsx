@@ -23,7 +23,7 @@ function Page() {
   const featuredCourses = courseData.courses.filter(
     (course: Course) => course.isFeatured
   );
-  const [cartStorage, setCartStorage] = useState(() => {
+  const [cartStorage, _setCartStorage] = useState(() => {
     const storedCart = localStorage.getItem("cart");
     return storedCart ? JSON.parse(storedCart) : [];
   });
@@ -32,18 +32,16 @@ function Page() {
   });
   const [cartData, setCartData] = useState();
   const [removeCartData, setRemoveCartData] = useState();
-
   const addToCart = (item: any) => {
     setCartData(item);
-    let localCartIds = cartIds;
+    const localCartIds = cartIds;
     localCartIds.push(item.id);
     setCartIds(localCartIds);
     setRemoveCartData(undefined);
   };
-
   const removeFromCart = (id: any) => {
     setRemoveCartData(id);
-    let localIds = cartIds.filter((item: any) => item != id);
+    const localIds = cartIds.filter((item: any) => item != id);
     setCartIds(localIds);
     setCartData(undefined);
   };

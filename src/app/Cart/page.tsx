@@ -16,9 +16,8 @@ interface Course {
   image?: string;
 }
 
-
 const Form = () => {
-  const [cartStorage, setCartStorage] = useState(() => {
+  const [cartStorage, _setCartStorage] = useState(() => {
     const storedCart = localStorage.getItem("cart");
     return storedCart ? JSON.parse(storedCart) : [];
   });
@@ -30,7 +29,7 @@ const Form = () => {
 
   const removeFromCart = (id: any) => {
     setRemoveCartData(id);
-    let localIds = cartIds.filter((item: any) => item = id);
+    const localIds = cartIds.filter((item:any) => item = id);
     setCartIds(localIds);
     setCartData(undefined);
   };

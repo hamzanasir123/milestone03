@@ -4,7 +4,7 @@ import { HoveredLink, Menu, MenuItem } from "../ui/navbar-menu";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 
-const Navbar = (props: any) => {
+const Navbar = (props:any) => {
   let jsonData;
 try {
   const cartStorage = localStorage.getItem('cart'); 
@@ -24,7 +24,7 @@ try {
   useEffect(() => {
     if (props.cartData) {
       if (cartNumber) {
-        let localCartItem = cartItem;
+        const localCartItem = cartItem;
         localCartItem.push(JSON.parse(JSON.stringify(props.cartData)));
         setCartItem(localCartItem);
         setCartNumber(cartNumber + 1);
@@ -35,11 +35,11 @@ try {
         localStorage.setItem('cart', JSON.stringify([props.cartData]))
       }
     }
-  }, [props.cartData, props.removeCartData]);
+  }, [props.cartData, props.removeCartData, cartItem, cartNumber]);
 
   useEffect(() => {
     if(props.removeCartData){
-      let localCartItem = cartItem.filter((item:any) => {
+      const localCartItem = cartItem.filter((item:any) => {
         return item.id != props.removeCartData;
       });
       setCartItem(localCartItem);
@@ -49,7 +49,7 @@ try {
         localStorage.removeItem('cart');
       }
     }
-  }, [props.removeCartData , props.cartData])
+  }, [props.removeCartData , props.cartData, cartItem, cartNumber])
 
   return (
     <>
@@ -93,6 +93,6 @@ try {
       </div>
     </>
   );
-};
+}
 
 export default Navbar;

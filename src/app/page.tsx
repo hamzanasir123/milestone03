@@ -16,7 +16,7 @@ interface Course {
   description: string;
   price: number;
   isFeatured: boolean;
-  image?: string;
+  image : string;
 }
 
 function Page() {

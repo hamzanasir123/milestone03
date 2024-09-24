@@ -44,7 +44,7 @@ const Form = () => {
                 <BackgroundGradient className="flex flex-col rounded-[22px] bg-white dark:bg-zinc-900 overflow-hidden h-full max-w-sm">
                   <div className="p-4 sm:p-6 flex flex-col items-center text-center flex-grow">
                     <Image
-                      src={course.image}
+                      src={course.image ?? 'https://manzeil.com/wp-content/uploads/2024/08/GET-THE-APP-800x800.png'}
                       alt="jordans"
                       height="400"
                       width="400"

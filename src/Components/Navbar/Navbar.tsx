@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { HoveredLink, Menu, MenuItem } from "../ui/navbar-menu";
+import { Menu, HoveredLink, MenuItem } from "../ui/navbar-menu";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 
@@ -10,19 +10,6 @@ interface CartItem {
 }
 
 const Navbar = (props:any) => {
-//   let jsonData;
-// try {
-//   const cartStorage = localStorage.getItem('cart'); 
-//   if (cartStorage) {
-//     jsonData = JSON.parse(cartStorage);
-//   } else {
-//     console.log('No data found in localStorage.');
-//     jsonData = {}; 
-//   }
-// } catch (error) {
-//   console.error('Error parsing JSON:', error);
-//   jsonData = {};
-// }
 const [cartStorage, setCartStorage] = useState<CartItem[]>([]);
   const [cartNumber, setCartNumber] = useState(cartStorage.length);
   const [cartItem, setCartItem] = useState<any[]>(cartStorage);

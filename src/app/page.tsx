@@ -40,8 +40,11 @@ function Page() {
           const parsedCart = JSON.parse(storedCart) as CartItem[];
           setCartStorage(parsedCart); 
           setCartIds(parsedCart.map((item) => item.id));
-        }
-      }
+           if(storedCart.length === 0){
+          localStorage.removeItem("cart");
+        };
+        };
+      };
     },[])
     const addToCart = (item: any) => {
       setCartData(item);

@@ -46,7 +46,7 @@ const [cartStorage, setCartStorage] = useState<CartItem[]>([]);
         setCartNumber(cartNumber + 1);
         localStorage.setItem('cart', JSON.stringify(localCartItem));
       } else {
-        setCartNumber(1);
+        setCartNumber(cartNumber + 1);
         setCartItem([props.cartData])
         localStorage.setItem('cart', JSON.stringify([props.cartData]))
       }

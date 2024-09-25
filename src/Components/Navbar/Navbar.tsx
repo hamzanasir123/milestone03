@@ -4,24 +4,39 @@ import { HoveredLink, Menu, MenuItem } from "../ui/navbar-menu";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 
-const Navbar = (props:any) => {
-  let jsonData;
-  
-try {
-  const cartStorage = localStorage.getItem('cart'); 
-  if (cartStorage) {
-    jsonData = JSON.parse(cartStorage);
-  } else {
-    console.log('No data found in localStorage.');
-    jsonData = {}; 
-  }
-} catch (error) {
-  console.error('Error parsing JSON:', error);
-  jsonData = {};
+
+interface CartItem {
+  id: number;
 }
-  const [cartNumber, setCartNumber] = useState(jsonData.length);
-  const [cartItem, setCartItem] = useState<any[]>(jsonData);
+
+const Navbar = (props:any) => {
+//   let jsonData;
+// try {
+//   const cartStorage = localStorage.getItem('cart'); 
+//   if (cartStorage) {
+//     jsonData = JSON.parse(cartStorage);
+//   } else {
+//     console.log('No data found in localStorage.');
+//     jsonData = {}; 
+//   }
+// } catch (error) {
+//   console.error('Error parsing JSON:', error);
+//   jsonData = {};
+// }
+const [cartStorage, setCartStorage] = useState<CartItem[]>([]);
+  const [cartNumber, setCartNumber] = useState(cartStorage.length);
+  const [cartItem, setCartItem] = useState<any[]>(cartStorage);
   const [active, setActive] = useState<string | null>(null);
+
+  useEffect(() => {
+    if(typeof window !== 'undefined'){
+      const storedCart = localStorage.getItem("cart");
+      if (storedCart) {
+        const parsedCart = JSON.parse(storedCart) as CartItem[];
+        setCartStorage(parsedCart); 
+      }
+    }
+  },[])
   useEffect(() => {
     if (props.cartData) {
       if (cartNumber) {
@@ -87,7 +102,7 @@ try {
               item="MYACCOUNT"
             ></MenuItem>
           </Link>
-          <Link href={cartNumber ? "/Cart" : "/"} className="text-white">
+          <Link href={cartNumber ? "/Cart" : "#"} className="text-white">
             CART({cartNumber ? cartNumber : 0 })
           </Link>
         </Menu>

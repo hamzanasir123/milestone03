@@ -107,7 +107,9 @@ const Form = () => {
                 </BackgroundGradient>
               </div>
             )))
-          : <h1>There Is No Item In This Cart</h1>
+          : <h1
+          className="text-center text-2xl font-black text-white"
+          >There Is No Item In This Cart!</h1>
           }
           </div>
         </div>

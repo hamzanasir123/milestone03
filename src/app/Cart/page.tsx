@@ -5,7 +5,7 @@ import React from "react";
 import { BackgroundGradient } from "@/Components/ui/background-gradient";
 import Image from "next/image";
 import { StyledWrapper } from "@/Components/CartButton/CartBottun";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 interface Course {
   id: number;
@@ -16,24 +16,42 @@ interface Course {
   image?: undefined;
 }
 
+interface CartItem {
+  id: number;
+  title: string;
+  description: string;
+  price: number;
+  isFeatured: boolean;
+  image?: undefined;
+}
+
 const Form = () => {
-  const [cartStorage, _setCartStorage] = useState(() => {
-    if(typeof window != 'undefined'){
+
+  const [cartData, setCartData] = useState<CartItem | null>(null);
+  const [removeCartData, setRemoveCartData] = useState<number | null>(null);
+  const [cartStorage, setCartStorage] = useState<CartItem[]>([]);
+  const [cartIds, setCartIds] = useState<number[]>([]);
+
+  
+  useEffect(() => {
+    if(typeof window !== 'undefined'){
       const storedCart = localStorage.getItem("cart");
-      return storedCart ? JSON.parse(storedCart) : [];
-    };
-  });
-  const [cartIds, setCartIds] = useState(() => {
-    return cartStorage.map((item: any) => item.id);
-  });
-  const [cartData, setCartData] = useState();
-  const [removeCartData, setRemoveCartData] = useState();
+      if (storedCart) {
+        const parsedCart = JSON.parse(storedCart) as CartItem[];
+        setCartStorage(parsedCart); 
+        setCartIds(parsedCart.map((item) => item.id)); 
+      }
+    }
+  },[])
 
   const removeFromCart = (id: any) => {
     setRemoveCartData(id);
-    const localIds = cartIds.filter((item:any) => item = id);
-    setCartIds(localIds);
-    setCartData(undefined);
+    const updatedCartIds = cartIds.filter((itemId) => itemId !== id);
+    setCartIds(updatedCartIds);
+    const updatedCartStorage = cartStorage.filter((item) => item.id !== id);
+    setCartStorage(updatedCartStorage);
+    localStorage.setItem("cart", JSON.stringify(updatedCartStorage));
+    setCartData(null);
   };
   return (
     <>
@@ -41,7 +59,7 @@ const Form = () => {
       <div className="py-12 bg-gray-900">
         <div className="mt-10 mx-8">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-center mt-24">
-            {cartStorage && cartStorage.lenght > 0 ? 
+            {cartStorage.length > 0 ? 
             (cartStorage.map((course: Course) => (
               <div key={course.id} className="flex justify-center">
                 <BackgroundGradient className="flex flex-col rounded-[22px] bg-white dark:bg-zinc-900 overflow-hidden h-full max-w-sm">

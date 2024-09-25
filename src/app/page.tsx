@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FooterOne } from "@/Components/Footer/Footer";
 import Home from "@/Components/Home/Home";
 import Navbar from "@/Components/Navbar/Navbar";
@@ -16,36 +16,50 @@ interface Course {
   description: string;
   price: number;
   isFeatured: boolean;
-  image: string;
+  image?: string;
+}
+
+
+interface CartItem {
+  id: number;
 }
 
 function Page() {
     const featuredCourses = courseData.courses.filter(
       (course: Course) => course.isFeatured
     );
-    const [cartData, setCartData] = useState();
-    const [removeCartData, setRemoveCartData] = useState();
-    const [cartStorage, _setCartStorage] = useState(() => {
-      if(typeof window != 'undefined'){
+    const [cartData, setCartData] = useState<CartItem | null>(null);
+    const [removeCartData, setRemoveCartData] = useState<number | null>(null);
+    const [cartStorage, setCartStorage] = useState<CartItem[]>([]);
+    const [cartIds, setCartIds] = useState<number[]>([]);
+
+    useEffect(() => {
+      if(typeof window !== 'undefined'){
         const storedCart = localStorage.getItem("cart");
-        return storedCart ? JSON.parse(storedCart) : [];
+        if (storedCart) {
+          const parsedCart = JSON.parse(storedCart) as CartItem[];
+          setCartStorage(parsedCart); 
+          setCartIds(parsedCart.map((item) => item.id));
+        }
       }
-    });
-    const [cartIds, setCartIds] = useState(() => {
-      return cartStorage.map((item: any) => item.id);
-    });
+    },[])
     const addToCart = (item: any) => {
       setCartData(item);
-      const localCartIds = cartIds;
-      localCartIds.push(item.id);
-      setCartIds(localCartIds);
-      setRemoveCartData(undefined);
+      const updatedCartIds = [...cartIds, item.id];
+      setCartIds(updatedCartIds);
+      const updatedCartStorage = [...cartStorage, item];
+      setCartStorage(updatedCartStorage);
+      localStorage.setItem("cart", JSON.stringify(updatedCartStorage));
+      setRemoveCartData(null);
     };
     const removeFromCart = (id: any) => {
       setRemoveCartData(id);
-      const localIds = cartIds.filter((item: any) => item != id);
-      setCartIds(localIds);
-      setCartData(undefined);
+      const updatedCartIds = cartIds.filter((itemId) => itemId !== id);
+      setCartIds(updatedCartIds);
+      const updatedCartStorage = cartStorage.filter((item) => item.id !== id);
+      setCartStorage(updatedCartStorage);
+      localStorage.setItem("cart", JSON.stringify(updatedCartStorage));
+      setCartData(null);
     };
     return (
       <>
@@ -64,8 +78,7 @@ function Page() {
           </div>
           <div className="mt-10 mx-8">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-center">
-              {featuredCourses && featuredCourses.length > 0 ? 
-              (featuredCourses.map((course: Course) => (
+              {featuredCourses.map((course: Course) => (
                 <div key={course.id} className="flex justify-center">
                   <BackgroundGradient className="flex flex-col rounded-[22px] bg-white dark:bg-zinc-900 overflow-hidden h-full max-w-sm">
                     <div className="p-4 sm:p-6 flex flex-col items-center text-center flex-grow">
@@ -137,10 +150,7 @@ function Page() {
                     </div>
                   </BackgroundGradient>
                 </div>
-              )))
-            :
-            <h1>No Item In Availible</h1>
-            }
+              ))}
             </div>
           </div>
           <div className="mt-20 text-center">

@@ -79,12 +79,12 @@ function Page() {
           <div className="mt-10 mx-8">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-center">
               {featuredCourses.map((course: Course) => (
-                <div key={course.id ?? 'https://manzeil.com/wp-content/uploads/2024/08/GET-THE-APP-800x800.png'
-                  } className="flex justify-center">
+                <div key={course.id}
+                 className="flex justify-center">
                   <BackgroundGradient className="flex flex-col rounded-[22px] bg-white dark:bg-zinc-900 overflow-hidden h-full max-w-sm">
                     <div className="p-4 sm:p-6 flex flex-col items-center text-center flex-grow">
                       <Image
-                        src={course.image}
+                        src={course.image  ?? 'https://manzeil.com/wp-content/uploads/2024/08/GET-THE-APP-800x800.png'}
                         alt="jordans"
                         height="400"
                         width="400"

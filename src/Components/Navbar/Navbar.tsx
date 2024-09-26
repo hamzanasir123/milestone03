@@ -4,26 +4,25 @@ import { Menu, HoveredLink, MenuItem } from "../ui/navbar-menu";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 
-
 interface CartItem {
   id: number;
 }
 
-const Navbar = (props:any) => {
-const [cartStorage, setCartStorage] = useState<CartItem[]>([]);
+const Navbar = (props: any) => {
+  const [cartStorage, setCartStorage] = useState<CartItem[]>([]);
   const [cartNumber, setCartNumber] = useState(cartStorage.length);
   const [cartItem, setCartItem] = useState<any[]>(cartStorage);
   const [active, setActive] = useState<string | null>(null);
 
   useEffect(() => {
-    if(typeof window !== 'undefined'){
+    if (typeof window !== "undefined") {
       const storedCart = localStorage.getItem("cart");
       if (storedCart) {
         const parsedCart = JSON.parse(storedCart) as CartItem[];
-        setCartStorage(parsedCart); 
+        setCartStorage(parsedCart);
       }
     }
-  },[])
+  }, []);
   useEffect(() => {
     if (props.cartData) {
       if (cartNumber) {
@@ -31,28 +30,28 @@ const [cartStorage, setCartStorage] = useState<CartItem[]>([]);
         localCartItem.push(JSON.parse(JSON.stringify(props.cartData)));
         setCartItem(localCartItem);
         setCartNumber(cartNumber + 1);
-        localStorage.setItem('cart', JSON.stringify(localCartItem));
+        localStorage.setItem("cart", JSON.stringify(localCartItem));
       } else {
         setCartNumber(cartNumber + 1);
-        setCartItem([props.cartData])
-        localStorage.setItem('cart', JSON.stringify([props.cartData]))
+        setCartItem([props.cartData]);
+        localStorage.setItem("cart", JSON.stringify([props.cartData]));
       }
     }
   }, [props.cartData, props.removeCartData]);
 
   useEffect(() => {
-    if(props.removeCartData){
-      const localCartItem = cartItem.filter((item:any) => {
+    if (props.removeCartData) {
+      const localCartItem = cartItem.filter((item: any) => {
         return item.id != props.removeCartData;
       });
       setCartItem(localCartItem);
       setCartNumber(cartNumber - 1);
-      localStorage.setItem('cart', JSON.stringify(localCartItem));
-      if(localCartItem.length == 0){
-        localStorage.removeItem('cart');
+      localStorage.setItem("cart", JSON.stringify(localCartItem));
+      if (localCartItem.length == 0) {
+        localStorage.removeItem("cart");
       }
     }
-  }, [props.removeCartData , props.cartData])
+  }, [props.removeCartData, props.cartData]);
 
   return (
     <>
@@ -90,12 +89,12 @@ const [cartStorage, setCartStorage] = useState<CartItem[]>([]);
             ></MenuItem>
           </Link>
           <Link href={cartNumber ? "/Cart" : "#"} className="text-white">
-            CART({cartNumber ? cartNumber : 0 })
+            CART({cartNumber ? cartNumber : 0})
           </Link>
         </Menu>
       </div>
     </>
   );
-}
+};
 
 export default Navbar;

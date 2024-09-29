@@ -6,7 +6,6 @@ import { BackgroundGradient } from "@/Components/ui/background-gradient";
 import Image from "next/image";
 import { StyledWrapper } from "@/Components/CartButton/CartBottun";
 import { useState, useEffect } from "react";
-import "./globals.css";
 
 interface Course {
   id: number;

@@ -10,6 +10,7 @@ import { StyledWrapper } from "@/Components/CartButton/CartBottun";
 import courseData from "@/Data/music_courses.json";
 import Link from "next/link";
 
+
 interface Course {
   id: number;
   title: string;

@@ -1,6 +1,6 @@
 "use client"
-import React from 'react'
-import Tooltip from '../Tooltip/Tooltip'
+import React from 'react';
+import Tooltip from '../Tooltip/Tooltip';
 
 export function FooterOne() {
   return (

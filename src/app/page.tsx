@@ -9,7 +9,7 @@ import Image from "next/image";
 import { StyledWrapper } from "@/Components/CartButton/CartBottun";
 import courseData from "@/Data/music_courses.json";
 import Link from "next/link";
-import "./globals.css";
+
 
 
 interface Course {

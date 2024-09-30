@@ -7,6 +7,7 @@ import Image from "next/image";
 import { StyledWrapper } from "@/Components/CartButton/CartBottun";
 import { useState, useEffect } from "react";
 
+
 interface Course {
   id: number;
   title: string;

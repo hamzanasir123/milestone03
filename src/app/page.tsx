@@ -1,12 +1,12 @@
 "use client";
 import { useEffect, useState } from "react";
-import { FooterOne } from "@/Components/Footer/Footer";
-import Home from "@/Components/Home/Home";
-import Navbar from "@/Components/Navbar/Navbar";
+import { FooterOne } from "@/app/Components/Footer/Footer";
+import Home from "@/app/Components/Home/Home";
+import Navbar from "@/app/Components/Navbar/Navbar";
 import React from "react";
-import { BackgroundGradient } from "@/Components/ui/background-gradient";
+import { BackgroundGradient } from "@/app/ui/background-gradient";
 import Image from "next/image";
-import { StyledWrapper } from "@/Components/CartButton/CartBottun";
+import { StyledWrapper } from "@/app/Components/CartButton/CartBottun";
 import courseData from "@/Data/music_courses.json";
 import Link from "next/link";
 

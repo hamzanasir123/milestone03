@@ -1,10 +1,10 @@
 "use client";
-import { FooterOne } from "@/Components/Footer/Footer";
-import Navbar from "@/Components/Navbar/Navbar";
+import { FooterOne } from "@/app/Components/Footer/Footer";
+import Navbar from "@/app/Components/Navbar/Navbar";
 import React from "react";
-import { BackgroundGradient } from "@/Components/ui/background-gradient";
+import { BackgroundGradient } from "@/app/ui/background-gradient";
 import Image from "next/image";
-import { StyledWrapper } from "@/Components/CartButton/CartBottun";
+import { StyledWrapper } from "@/app/Components/CartButton/CartBottun";
 import { useState, useEffect } from "react";
 
 

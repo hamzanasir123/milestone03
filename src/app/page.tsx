@@ -4,7 +4,7 @@ import { FooterOne } from "@/app/Components/Footer/Footer";
 import Home from "@/app/Components/Home/Home";
 import Navbar from "@/app/Components/Navbar/Navbar";
 import React from "react";
-import { BackgroundGradient } from "@/app/ui/background-gradient";
+import { BackgroundGradient } from "@/app/Components/ui/background-gradient";
 import Image from "next/image";
 import { StyledWrapper } from "@/app/Components/CartButton/CartBottun";
 import courseData from "@/Data/music_courses.json";

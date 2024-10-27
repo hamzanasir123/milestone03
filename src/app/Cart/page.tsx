@@ -2,7 +2,7 @@
 import { FooterOne } from "@/app/Components/Footer/Footer";
 import Navbar from "@/app/Components/Navbar/Navbar";
 import React from "react";
-import { BackgroundGradient } from "@/app/ui/background-gradient";
+import { BackgroundGradient } from "@/app/Components/ui/background-gradient";
 import Image from "next/image";
 import { StyledWrapper } from "@/app/Components/CartButton/CartBottun";
 import { useState, useEffect } from "react";
